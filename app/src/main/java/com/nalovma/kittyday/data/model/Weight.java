@@ -1,4 +1,4 @@
-package com.nalovma.kittyday.model;
+package com.nalovma.kittyday.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
