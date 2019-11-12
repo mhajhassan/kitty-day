@@ -34,7 +34,7 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
 
     @Inject
     ViewModelFactory viewModelFactory;
-    private BreedsViewModel viewModel;
+    private BreedsViewModel breedsViewModel;
 
     @Override
     protected int layoutRes() {
@@ -43,10 +43,10 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(BreedsViewModel.class);
+        breedsViewModel = ViewModelProviders.of(this, viewModelFactory).get(BreedsViewModel.class);
 
         listView.addItemDecoration(new DividerItemDecoration(getBaseActivity(), 0));
-        listView.setAdapter(new BreedsAdapter(viewModel, this, this));
+        listView.setAdapter(new BreedsAdapter(breedsViewModel, this, this));
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         observableViewModel();
@@ -54,7 +54,6 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
 
     @Override
     public void onBreedSelected(Breed breed) {
-
         BreedDetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(BreedDetailsViewModel.class);
         detailsViewModel.setSelectedBreed(breed);
         getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new BreedDetailsFragment())
@@ -62,11 +61,11 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
     }
 
     private void observableViewModel() {
-        viewModel.getBreedsLivedata().observe(this, repos -> {
-            if (repos != null) listView.setVisibility(View.VISIBLE);
+        breedsViewModel.getBreedsLivedata().observe(this, breed -> {
+            if (breed != null) listView.setVisibility(View.VISIBLE);
         });
 
-        viewModel.getBreedsLoadError().observe(this, isError -> {
+        breedsViewModel.getLoadError().observe(this, isError -> {
             if (isError != null) if (isError) {
                 errorTextView.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
@@ -77,7 +76,7 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
             }
         });
 
-        viewModel.getLoading().observe(this, isLoading -> {
+        breedsViewModel.getLoading().observe(this, isLoading -> {
             if (isLoading != null) {
                 loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
                 if (isLoading) {

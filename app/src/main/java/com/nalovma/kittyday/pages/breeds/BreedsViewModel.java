@@ -22,7 +22,7 @@ public class BreedsViewModel extends ViewModel {
     private CompositeDisposable disposable;
 
     private final MutableLiveData<List<Breed>> breedsLivedata = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> breedsLoadError = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> loadError = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
     @Inject
@@ -36,8 +36,8 @@ public class BreedsViewModel extends ViewModel {
         return breedsLivedata;
     }
 
-    public LiveData<Boolean> getBreedsLoadError() {
-        return breedsLoadError;
+    public LiveData<Boolean> getLoadError() {
+        return loadError;
     }
 
     public LiveData<Boolean> getLoading() {
@@ -50,14 +50,14 @@ public class BreedsViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<Breed>>() {
                     @Override
                     public void onSuccess(List<Breed> breeds) {
-                        breedsLoadError.setValue(false);
+                        loadError.setValue(false);
                         breedsLivedata.setValue(breeds);
                         loading.setValue(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        breedsLoadError.setValue(true);
+                        loadError.setValue(true);
                         loading.setValue(false);
                     }
                 }));
