@@ -73,8 +73,8 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedViewH
 
         void bind(Breed breed) {
             this.breed = breed;
-            breedNameTextView.setText(breed.name);
-            breedOrigionTextView.setText(breed.origin);
+            breedNameTextView.setText(breed.getName());
+            breedOrigionTextView.setText(breed.getOrigin());
         }
     }
 }

@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
 import com.nalovma.kittyday.data.model.Breed;
+import com.nalovma.kittyday.pages.breed_details.BreedDetailsFragment;
+import com.nalovma.kittyday.pages.breed_details.BreedDetailsViewModel;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 
 import javax.inject.Inject;
@@ -52,13 +54,11 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
 
     @Override
     public void onBreedSelected(Breed breed) {
-        /*
-        DetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(DetailsViewModel.class);
-        detailsViewModel.setSelectedRepo(repo);
-        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new DetailsFragment())
-                .addToBackStack(null).commit();
 
-         */
+        BreedDetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(BreedDetailsViewModel.class);
+        detailsViewModel.setSelectedBreed(breed);
+        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new BreedDetailsFragment())
+                .addToBackStack(null).commit();
     }
 
     private void observableViewModel() {

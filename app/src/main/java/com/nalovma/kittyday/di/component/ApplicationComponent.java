@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.nalovma.kittyday.base.BaseApplication;
 import com.nalovma.kittyday.di.module.ActivityBindingModule;
-import com.nalovma.kittyday.di.module.ApplicationModule;
+import com.nalovma.kittyday.data.rest.ApplicationClient;
 import com.nalovma.kittyday.di.module.ContextModule;
 
 import javax.inject.Singleton;
@@ -16,7 +16,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 import dagger.android.support.DaggerApplication;
 
 @Singleton
-@Component(modules = {ContextModule.class, ApplicationModule.class, AndroidSupportInjectionModule.class, ActivityBindingModule.class})
+@Component(modules = {ContextModule.class, ApplicationClient.class, AndroidSupportInjectionModule.class, ActivityBindingModule.class})
 public interface ApplicationComponent extends AndroidInjector<DaggerApplication> {
 
     void inject(BaseApplication application);

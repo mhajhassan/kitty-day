@@ -1,6 +1,7 @@
-package com.nalovma.kittyday.di.module;
+package com.nalovma.kittyday.data.rest;
 
 import com.nalovma.kittyday.data.rest.CatService;
+import com.nalovma.kittyday.di.module.ViewModelModule;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.nalovma.kittyday.utils.Constants.*;
 
 @Module(includes = ViewModelModule.class)
-public class ApplicationModule {
+public class ApplicationClient {
 
     @Singleton
     @Provides

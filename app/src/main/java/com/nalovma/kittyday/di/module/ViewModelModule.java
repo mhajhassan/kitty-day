@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.nalovma.kittyday.di.util.ViewModelKey;
+import com.nalovma.kittyday.pages.breed_details.BreedDetailsViewModel;
 import com.nalovma.kittyday.pages.breeds.BreedsViewModel;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 
@@ -19,6 +20,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BreedsViewModel.class)
     abstract ViewModel bindBreedsViewModel(BreedsViewModel breedsViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BreedDetailsViewModel.class)
+    abstract ViewModel bindBreedDetailsViewModel(BreedDetailsViewModel breedDetailsViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

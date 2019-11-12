@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nalovma.kittyday.data.model.Breed;
-import com.nalovma.kittyday.data.rest.CatRepository;
+import com.nalovma.kittyday.repository.CatRepository;
 
 import java.util.List;
 

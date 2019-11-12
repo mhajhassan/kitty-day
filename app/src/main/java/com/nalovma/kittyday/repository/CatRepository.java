@@ -1,6 +1,7 @@
-package com.nalovma.kittyday.data.rest;
+package com.nalovma.kittyday.repository;
 
 import com.nalovma.kittyday.data.model.Breed;
+import com.nalovma.kittyday.data.rest.CatService;
 
 import java.util.List;
 

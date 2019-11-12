@@ -7,9 +7,16 @@ public class Weight {
 
     @SerializedName("imperial")
     @Expose
-    public String imperial;
+    private String imperial;
     @SerializedName("metric")
     @Expose
-    public String metric;
+    private String metric;
 
+    public String getImperial() {
+        return imperial;
+    }
+
+    public String getMetric() {
+        return metric;
+    }
 }
