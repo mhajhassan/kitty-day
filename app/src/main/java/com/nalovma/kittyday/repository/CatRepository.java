@@ -1,7 +1,8 @@
 package com.nalovma.kittyday.repository;
 
 import com.nalovma.kittyday.data.model.Breed;
-import com.nalovma.kittyday.data.model.CatImage;
+import com.nalovma.kittyday.data.model.BreedCatImage;
+import com.nalovma.kittyday.data.model.PublicImage;
 import com.nalovma.kittyday.data.rest.CatService;
 
 import java.util.List;
@@ -23,7 +24,11 @@ public class CatRepository {
         return catService.getBreeds();
     }
 
-    public Single<List<CatImage>> getBreedImage(String breedId) {
-        return catService.getBreedImage(breedId);
+    public Single<List<BreedCatImage>> getBreedImage(String breedId, String page, String limit) {
+        return catService.getBreedImage(breedId, page, limit);
+    }
+
+    public Single<List<PublicImage>> getPublicImages(String page, String limit, String order) {
+        return catService.getPublicImages(page, limit, order);
     }
 }

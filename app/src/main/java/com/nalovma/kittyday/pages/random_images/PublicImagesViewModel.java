@@ -1,11 +1,11 @@
-package com.nalovma.kittyday.pages.breed_details;
+package com.nalovma.kittyday.pages.random_images;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.nalovma.kittyday.data.model.Breed;
-import com.nalovma.kittyday.data.model.BreedCatImage;
+
+import com.nalovma.kittyday.data.model.PublicImage;
 import com.nalovma.kittyday.repository.CatRepository;
 
 import java.util.List;
@@ -17,33 +17,25 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class BreedDetailsViewModel extends ViewModel {
+public class PublicImagesViewModel extends ViewModel {
 
     private final CatRepository catRepository;
     private CompositeDisposable disposable;
 
-    private final MutableLiveData<Breed> selectedBreed = new MutableLiveData<>();
-    private final MutableLiveData<List<BreedCatImage>> catImageLivedata = new MutableLiveData<>();
+    private final MutableLiveData<List<PublicImage>> publicImagesLivedata = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loadError = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
     @Inject
-    public BreedDetailsViewModel(CatRepository catRepository) {
+    public PublicImagesViewModel(CatRepository catRepository) {
         this.catRepository = catRepository;
         disposable = new CompositeDisposable();
     }
 
-    public LiveData<Breed> getSelectedBreed() {
-        return selectedBreed;
+    public LiveData<List<PublicImage>> getPublicImagesLivedata() {
+        return publicImagesLivedata;
     }
 
-    public void setSelectedBreed(Breed breed) {
-        selectedBreed.setValue(breed);
-    }
-
-    public LiveData<List<BreedCatImage>> getCatImageLivedata() {
-        return catImageLivedata;
-    }
 
     public LiveData<Boolean> getLoadError() {
         return loadError;
@@ -53,15 +45,16 @@ public class BreedDetailsViewModel extends ViewModel {
         return loading;
     }
 
-    public void fetchCatImage(String id, String page, String limit) {
+
+    public void fetchPublicImages( String page, String limit, String order) {
         loading.setValue(true);
-        disposable.add(catRepository.getBreedImage(id, page, limit).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<BreedCatImage>>() {
+        disposable.add(catRepository.getPublicImages(page, limit, order).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<PublicImage>>() {
 
                     @Override
-                    public void onSuccess(List<BreedCatImage> breedCatImage) {
+                    public void onSuccess(List<PublicImage> publicImages) {
                         loadError.setValue(false);
-                        catImageLivedata.setValue(breedCatImage);
+                        publicImagesLivedata.setValue(publicImages);
                         loading.setValue(false);
                     }
 
@@ -82,5 +75,4 @@ public class BreedDetailsViewModel extends ViewModel {
             disposable = null;
         }
     }
-
 }

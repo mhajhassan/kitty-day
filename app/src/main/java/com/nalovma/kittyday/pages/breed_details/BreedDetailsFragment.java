@@ -1,10 +1,8 @@
 package com.nalovma.kittyday.pages.breed_details;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +15,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
 import com.nalovma.kittyday.data.model.Breed;
-import com.nalovma.kittyday.data.model.CatImage;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 
 import javax.inject.Inject;
@@ -74,17 +71,18 @@ public class BreedDetailsFragment extends BaseFragment {
             breedLifeSpanTextView.setText(breed.getLifeSpan());
             breedMetricTextView.setText(breed.getWeight().getMetric());
             breedDescriptionTextView.setText(breed.getDescription());
-            fetchBreedImage(breed.getId());
+            fetchBreedImage(breed.getId(), "0", "3");
         }
     }
 
-    private void fetchBreedImage(String id) {
-        detailsViewModel.fetchCatImage(id);
+    private void fetchBreedImage(String id, String page, String limit) {
+        detailsViewModel.fetchCatImage(id, page, limit);
         detailsViewModel.getCatImageLivedata().observe(this, catImageList -> {
-            if (catImageList != null){
+            if (catImageList != null) {
                 RequestOptions options = new RequestOptions()
                         .centerCrop()
-                        .error(R.drawable.cat);;
+                        .error(R.drawable.cat);
+                ;
 
                 Glide.with(this)
                         .load(catImageList.get(0).getUrl())

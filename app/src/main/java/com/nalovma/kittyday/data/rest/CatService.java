@@ -1,8 +1,9 @@
 package com.nalovma.kittyday.data.rest;
 
 import com.nalovma.kittyday.data.model.Breed;
-import com.nalovma.kittyday.data.model.CatImage;
+import com.nalovma.kittyday.data.model.BreedCatImage;
 import com.nalovma.kittyday.data.model.Category;
+import com.nalovma.kittyday.data.model.PublicImage;
 
 import java.util.List;
 
@@ -19,5 +20,9 @@ public interface CatService {
     Single<List<Category>> getCategories();
 
     @GET("images/search")
-    Single<List<CatImage>> getBreedImage(@Query("breed_ids") String breedId);
+    Single<List<BreedCatImage>> getBreedImage(@Query("breed_ids") String breedId, @Query("page") String page, @Query("limit") String limit);
+
+
+    @GET("images/search")
+    Single<List<PublicImage>> getPublicImages(@Query("page") String page, @Query("limit") String limit, @Query("order") String order);
 }
