@@ -28,7 +28,7 @@ public class CatRepository {
         return catService.getBreedImage(breedId, page, limit);
     }
 
-    public Single<List<PublicImage>> getPublicImages(String page, String limit, String order) {
+    public Single<List<PublicImage>> getPublicImages(int page, int limit, String order) {
         return catService.getPublicImages(page, limit, order);
     }
 }

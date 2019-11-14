@@ -46,7 +46,7 @@ public class PublicImagesViewModel extends ViewModel {
     }
 
 
-    public void fetchPublicImages( String page, String limit, String order) {
+    public void fetchPublicImages( int page, int limit, String order) {
         loading.setValue(true);
         disposable.add(catRepository.getPublicImages(page, limit, order).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<PublicImage>>() {

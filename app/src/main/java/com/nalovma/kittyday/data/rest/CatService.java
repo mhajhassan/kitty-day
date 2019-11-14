@@ -24,5 +24,5 @@ public interface CatService {
 
 
     @GET("images/search")
-    Single<List<PublicImage>> getPublicImages(@Query("page") String page, @Query("limit") String limit, @Query("order") String order);
+    Single<List<PublicImage>> getPublicImages(@Query("page") int page, @Query("limit") int limit, @Query("order") String order);
 }
