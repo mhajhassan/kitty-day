@@ -49,8 +49,8 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     View loadingView;
 
     private int pageNumber = 0;
-    private int itemLimit = 3;
-    private String itemsOrder = "RANDOM";
+    private int itemLimit = 5;
+    private static final String ITEMS_ORDER = "RANDOM";
 
     @Override
     protected int layoutRes() {
@@ -73,7 +73,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     @Override
     public void onCardSwiped(Direction direction) {
         if (manager.getTopPosition() == publicImagesAdapter.getItemCount()) {
-            observableViewModel(pageNumber++, itemLimit, itemsOrder);
+            paginate();
         }
     }
 
@@ -101,7 +101,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     public void onSkipButtonClicked(View view) {
         SwipeAnimationSetting setting = new SwipeAnimationSetting.Builder()
                 .setDirection(Direction.Left)
-                .setDuration(Duration.Normal.duration)
+                .setDuration(Duration.Slow.duration)
                 .setInterpolator(new AccelerateInterpolator())
                 .build();
         manager.setSwipeAnimationSetting(setting);
@@ -112,7 +112,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     public void onLikeButtonClicked(View view) {
         SwipeAnimationSetting setting = new SwipeAnimationSetting.Builder()
                 .setDirection(Direction.Right)
-                .setDuration(Duration.Normal.duration)
+                .setDuration(Duration.Slow.duration)
                 .setInterpolator(new AccelerateInterpolator())
                 .build();
         manager.setSwipeAnimationSetting(setting);
@@ -122,7 +122,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     private void initializeCardStackView() {
         manager.setStackFrom(StackFrom.None);
-        manager.setVisibleCount(3);
+        manager.setVisibleCount(itemLimit);
         manager.setTranslationInterval(8.0f);
         manager.setScaleInterval(0.95f);
         manager.setSwipeThreshold(0.3f);
@@ -134,14 +134,20 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         manager.setOverlayInterpolator(new LinearInterpolator());
         cardStackView.setLayoutManager(manager);
         cardStackView.setAdapter(publicImagesAdapter);
-        observableViewModel(pageNumber, itemLimit, itemsOrder);
+        observableViewModel();
+        paginate();
     }
 
-    private void observableViewModel(int page, int limit, String order) {
-        publicImagesViewModel.fetchPublicImages(page, limit, order);
+    private void paginate() {
+        publicImagesViewModel.fetchPublicImages(pageNumber++, itemLimit, ITEMS_ORDER);
+    }
+
+    private void observableViewModel() {
 
         publicImagesViewModel.getPublicImagesLivedata().observe(this, publicImageList -> {
-            if (publicImageList != null) imagesConstraintLayout.setVisibility(View.VISIBLE);
+            if (publicImageList != null) {
+                imagesConstraintLayout.setVisibility(View.VISIBLE);
+            }
         });
 
         publicImagesViewModel.getLoadError().observe(this, isError -> {
