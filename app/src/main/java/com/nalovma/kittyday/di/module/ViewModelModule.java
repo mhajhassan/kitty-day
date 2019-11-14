@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.nalovma.kittyday.di.util.ViewModelKey;
 import com.nalovma.kittyday.pages.breed_details.BreedDetailsViewModel;
 import com.nalovma.kittyday.pages.breeds.BreedsViewModel;
-import com.nalovma.kittyday.pages.random_images.PublicImagesViewModel;
+import com.nalovma.kittyday.pages.public_images.PublicImagesViewModel;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 
 import dagger.Binds;

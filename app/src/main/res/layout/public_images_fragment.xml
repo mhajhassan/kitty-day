@@ -21,18 +21,18 @@
             app:backgroundTint="@android:color/white"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/rewind_button"
+            app:layout_constraintEnd_toStartOf="@+id/fav_button"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="#22ED7563" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/rewind_button"
+            android:id="@+id/fav_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/rewind_blue_24dp"
+            android:src="@drawable/ic_favorite_red_24dp"
             app:backgroundTint="@android:color/white"
-            app:fabSize="mini"
+            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="@+id/skip_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rewind_button"
+            app:layout_constraintStart_toEndOf="@+id/fav_button"
             app:rippleColor="#226FE2B3" />
 
 
@@ -58,9 +58,9 @@
             android:id="@+id/card_stack_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
             android:clipToPadding="false"
             android:padding="4dp"
-            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/barrier"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="top"
-            app:constraint_referenced_ids="rewind_button,like_button,skip_button"
+            app:constraint_referenced_ids="fav_button,like_button,skip_button"
             tools:layout_editor_absoluteY="731dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

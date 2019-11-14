@@ -1,4 +1,4 @@
-package com.nalovma.kittyday.pages.random_images;
+package com.nalovma.kittyday.pages.public_images;
 
 import android.content.Context;
 import android.view.LayoutInflater;

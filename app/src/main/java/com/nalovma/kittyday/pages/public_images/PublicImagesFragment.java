@@ -1,4 +1,4 @@
-package com.nalovma.kittyday.pages.random_images;
+package com.nalovma.kittyday.pages.public_images;
 
 import android.os.Bundle;
 import android.view.View;
@@ -72,7 +72,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     @Override
     public void onCardSwiped(Direction direction) {
-        if (manager.getTopPosition() == publicImagesAdapter.getItemCount()) {
+        if (manager.getTopPosition() == publicImagesAdapter.getItemCount() - 2) {
             paginate();
         }
     }
@@ -119,6 +119,10 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         cardStackView.swipe();
     }
 
+    @OnClick(R.id.fav_button)
+    public void onFavButtonClicked(View view) {
+
+    }
 
     private void initializeCardStackView() {
         manager.setStackFrom(StackFrom.None);

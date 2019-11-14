@@ -4,8 +4,7 @@ import android.os.Bundle;
 
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseActivity;
-import com.nalovma.kittyday.pages.breeds.BreedsFragment;
-import com.nalovma.kittyday.pages.random_images.PublicImagesFragment;
+import com.nalovma.kittyday.pages.public_images.PublicImagesFragment;
 
 public class MainActivity extends BaseActivity {
 
