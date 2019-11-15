@@ -56,7 +56,7 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
     public void onBreedSelected(Breed breed) {
         BreedDetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(BreedDetailsViewModel.class);
         detailsViewModel.setSelectedBreed(breed);
-        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new BreedDetailsFragment())
+        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new BreedDetailsFragment())
                 .addToBackStack(null).commit();
     }
 
