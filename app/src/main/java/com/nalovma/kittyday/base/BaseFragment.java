@@ -6,9 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.nalovma.kittyday.pages.main.MainActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -52,5 +56,40 @@ public abstract class BaseFragment extends DaggerFragment {
             unbinder.unbind();
             unbinder = null;
         }
+    }
+
+    protected void setToolbarTitleColor(@ColorRes int color) {
+        if (!(getActivity() instanceof MainActivity)) {
+            return;
+        }
+        ((MainActivity) getActivity()).setToolbarTitleColor(color);
+    }
+
+    protected void setToolbarBackgroundColor(@ColorRes int color) {
+        if (!(getActivity() instanceof MainActivity)) {
+            return;
+        }
+        ((MainActivity) getActivity()).setToolbarBackgroundColor(color);
+    }
+
+    protected void setToolbarBackgroundDrawable(@DrawableRes int drawable) {
+        if (!(getActivity() instanceof MainActivity)) {
+            return;
+        }
+        ((MainActivity) getActivity()).setToolbarBackgroundDrawable(drawable);
+    }
+
+    protected void setToolbarNavigationIcon(@DrawableRes int drawable) {
+        if (!(getActivity() instanceof MainActivity)) {
+            return;
+        }
+        ((MainActivity) getActivity()).setToolbarNavigationIcon(drawable);
+    }
+
+    protected void setToolbarTitle(String message) {
+        if (!(getActivity() instanceof MainActivity)) {
+            return;
+        }
+        ((MainActivity) getActivity()).setToolbarTitle(message);
     }
 }

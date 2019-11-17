@@ -49,6 +49,11 @@ public class BreedsFragment extends BaseFragment implements BreedsListener {
         listView.setAdapter(new BreedsAdapter(breedsViewModel, this, this));
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        setToolbarBackgroundColor(R.color.colorPrimaryDark);
+        setToolbarNavigationIcon(R.drawable.ic_menu_white_24dp);
+        setToolbarTitleColor(R.color.color_white);
+        setToolbarTitle(getString(R.string.breeds));
+
         observableViewModel();
     }
 

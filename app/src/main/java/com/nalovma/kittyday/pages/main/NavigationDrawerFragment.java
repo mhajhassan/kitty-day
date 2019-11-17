@@ -71,7 +71,7 @@ public class NavigationDrawerFragment extends BaseFragment {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
-            actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
         }
         mDrawerToggle.syncState();
     }

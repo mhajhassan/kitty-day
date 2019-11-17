@@ -62,6 +62,12 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         publicImagesViewModel = ViewModelProviders.of(this, viewModelFactory).get(PublicImagesViewModel.class);
         manager = new CardStackLayoutManager(getBaseActivity(), this);
         publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel, this);
+
+        setToolbarBackgroundColor(R.color.colorPrimaryDark);
+        setToolbarNavigationIcon(R.drawable.ic_menu_white_24dp);
+        setToolbarTitleColor(R.color.color_white);
+        setToolbarTitle(getString(R.string.home));
+
         initializeCardStackView();
     }
 

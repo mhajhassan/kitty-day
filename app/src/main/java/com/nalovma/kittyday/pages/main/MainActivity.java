@@ -1,10 +1,14 @@
 package com.nalovma.kittyday.pages.main;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -28,6 +32,9 @@ public class MainActivity extends BaseActivity implements MainNavigation {
 
     @BindView(R.id.main_toolbar)
     Toolbar mToolbar;
+
+    @BindView(R.id.main_toolbar_title)
+    TextView mToolbarTitleTextView;
 
     @Override
     protected int layoutRes() {
@@ -53,6 +60,26 @@ public class MainActivity extends BaseActivity implements MainNavigation {
     @Override
     public void goToPublicImages() {
         switchFragment(new PublicImagesFragment());
+    }
+
+    public void setToolbarBackgroundDrawable(@DrawableRes int drawable) {
+        mToolbar.setBackground(ContextCompat.getDrawable(this, drawable));
+    }
+
+    public void setToolbarBackgroundColor(@ColorRes int color) {
+        mToolbar.setBackgroundColor(ContextCompat.getColor(this, color));
+    }
+
+    public void setToolbarTitleColor(@ColorRes int color) {
+        mToolbarTitleTextView.setTextColor(ContextCompat.getColor(this, color));
+    }
+
+    public void setToolbarNavigationIcon(@DrawableRes int drawable) {
+        mToolbar.setNavigationIcon(drawable);
+    }
+
+    public void setToolbarTitle(String title) {
+        mToolbarTitleTextView.setText(title);
     }
 
     private void switchFragment(@NonNull Fragment fragment) {
