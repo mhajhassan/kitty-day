@@ -1,5 +1,6 @@
 package com.nalovma.kittyday.pages.public_images;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -30,8 +31,12 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.nalovma.kittyday.utils.Constants.*;
+import static com.nalovma.kittyday.utils.Utils.getUniqueID;
 
 public class PublicImagesFragment extends BaseFragment implements CardStackListener {
+
+    @Inject
+    SharedPreferences sharedPreferences;
 
     @Inject
     ViewModelFactory viewModelFactory;
@@ -56,6 +61,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
 
     private String currentImageId;
+    private String sub_id;
 
     @Override
     protected int layoutRes() {
@@ -73,6 +79,10 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         setToolbarTitleColor(R.color.color_white);
         setToolbarTitle(getString(R.string.home));
 
+        if (sharedPreferences.getString(UNIQUE_KEY, "").isEmpty()) {
+            sharedPreferences.edit().putString(UNIQUE_KEY, getUniqueID()).apply();
+        }
+        sub_id = sharedPreferences.getString(UNIQUE_KEY, "");
         initializeCardStackView();
     }
 
@@ -117,8 +127,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
-        //TODO: get the subId from the SharedPreferences
-        postVote(currentImageId, "test", VOTE_SKIP);
+        postVote(currentImageId, sub_id, VOTE_SKIP);
     }
 
     @OnClick(R.id.like_button)
@@ -130,8 +139,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
-        //TODO: get the subId from the SharedPreferences
-        postVote(currentImageId, "test", VOTE_LIKE);
+        postVote(currentImageId, sub_id, VOTE_LIKE);
     }
 
     @OnClick(R.id.fav_button)

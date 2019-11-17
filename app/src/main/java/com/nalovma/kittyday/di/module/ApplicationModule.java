@@ -1,4 +1,7 @@
-package com.nalovma.kittyday.data.rest;
+package com.nalovma.kittyday.di.module;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.nalovma.kittyday.data.rest.CatService;
 import com.nalovma.kittyday.di.module.ViewModelModule;
@@ -23,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static com.nalovma.kittyday.utils.Constants.*;
 
 @Module(includes = ViewModelModule.class)
-public class ApplicationClient {
+public class ApplicationModule {
 
     @Singleton
     @Provides
@@ -56,5 +59,12 @@ public class ApplicationClient {
     static CatService provideRetrofitService(Retrofit retrofit) {
         return retrofit.create(CatService.class);
     }
+
+    @Singleton
+    @Provides
+    SharedPreferences provideSharedPreferences(Context context) {
+        return context.getSharedPreferences("Store", Context.MODE_PRIVATE);
+    }
+
 }
 

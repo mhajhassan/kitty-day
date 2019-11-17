@@ -7,4 +7,5 @@ public interface Constants {
     String ITEMS_ORDER = "RANDOM";
     int VOTE_SKIP = 0;
     int VOTE_LIKE = 1;
+    String UNIQUE_KEY = "unique_key";
 }
