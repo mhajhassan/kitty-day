@@ -4,11 +4,15 @@ import com.nalovma.kittyday.data.model.Breed;
 import com.nalovma.kittyday.data.model.BreedCatImage;
 import com.nalovma.kittyday.data.model.Category;
 import com.nalovma.kittyday.data.model.PublicImage;
+import com.nalovma.kittyday.data.model.Vote;
+import com.nalovma.kittyday.data.model.VoteResponse;
 
 import java.util.List;
 
 import io.reactivex.Single;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface CatService {
@@ -25,4 +29,7 @@ public interface CatService {
 
     @GET("images/search")
     Single<List<PublicImage>> getPublicImages(@Query("page") int page, @Query("limit") int limit, @Query("order") String order);
+
+    @POST("votes")
+    Single<VoteResponse> postVote(@Body Vote vote);
 }

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
+import com.nalovma.kittyday.data.model.Vote;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
@@ -27,6 +28,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.nalovma.kittyday.utils.Constants.*;
 
 public class PublicImagesFragment extends BaseFragment implements CardStackListener {
 
@@ -50,7 +53,9 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     private int pageNumber = 0;
     private int itemLimit = 5;
-    private static final String ITEMS_ORDER = "RANDOM";
+
+
+    private String currentImageId;
 
     @Override
     protected int layoutRes() {
@@ -95,7 +100,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     @Override
     public void onCardAppeared(View view, int position) {
-
+        currentImageId = publicImagesAdapter.getImageId(position);
     }
 
     @Override
@@ -112,6 +117,8 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
+        //TODO: get the subId from the SharedPreferences
+        postVote(currentImageId, "test", VOTE_SKIP);
     }
 
     @OnClick(R.id.like_button)
@@ -123,11 +130,17 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
+        //TODO: get the subId from the SharedPreferences
+        postVote(currentImageId, "test", VOTE_LIKE);
     }
 
     @OnClick(R.id.fav_button)
     public void onFavButtonClicked(View view) {
 
+    }
+
+    private void postVote(String imageId, String subId, int Value) {
+        publicImagesViewModel.postVote(new Vote(imageId, subId, Value));
     }
 
     private void initializeCardStackView() {

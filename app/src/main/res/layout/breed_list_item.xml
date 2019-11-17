@@ -11,6 +11,7 @@
     android:elevation="1dp"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
+    app:cardBackgroundColor="@color/color_forground"
     app:cardCornerRadius="2dp"
     app:cardMaxElevation="8dp">
 
@@ -21,8 +22,8 @@
 
         <ImageView
             android:id="@+id/iv_breed_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -32,28 +33,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_name"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_breed_image"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Abyssinian" />
-
-        <TextView
-            android:id="@+id/tv_origin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/iv_breed_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_breed_image"
-            tools:text="Egypt" />
+            app:layout_constraintTop_toTopOf="@+id/iv_breed_image">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/AppTheme.Headline5"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_breed_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Abyssinian" />
+
+            <TextView
+                android:id="@+id/tv_origin"
+                style="@style/AppTheme.Headline5"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/color_white"
+                android:textSize="20sp"
+
+                tools:text="Egypt" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

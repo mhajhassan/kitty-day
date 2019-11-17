@@ -3,6 +3,8 @@ package com.nalovma.kittyday.repository;
 import com.nalovma.kittyday.data.model.Breed;
 import com.nalovma.kittyday.data.model.BreedCatImage;
 import com.nalovma.kittyday.data.model.PublicImage;
+import com.nalovma.kittyday.data.model.Vote;
+import com.nalovma.kittyday.data.model.VoteResponse;
 import com.nalovma.kittyday.data.rest.CatService;
 
 import java.util.List;
@@ -30,5 +32,9 @@ public class CatRepository {
 
     public Single<List<PublicImage>> getPublicImages(int page, int limit, String order) {
         return catService.getPublicImages(page, limit, order);
+    }
+
+    public Single<VoteResponse> postVote(Vote vote) {
+        return catService.postVote(vote);
     }
 }

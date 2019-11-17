@@ -56,6 +56,10 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
         return data.size();
     }
 
+    public String getImageId(int position) {
+        return data.get(position).getId();
+    }
+
     static final class ViewHolder extends RecyclerView.ViewHolder {
 
         PublicImage publicImage;
