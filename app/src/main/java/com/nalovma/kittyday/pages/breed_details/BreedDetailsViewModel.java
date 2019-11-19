@@ -24,8 +24,6 @@ public class BreedDetailsViewModel extends ViewModel {
 
     private final MutableLiveData<Breed> selectedBreed = new MutableLiveData<>();
     private final MutableLiveData<List<BreedCatImage>> catImageLivedata = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> loadError = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
     @Inject
     public BreedDetailsViewModel(CatRepository catRepository) {
@@ -45,30 +43,18 @@ public class BreedDetailsViewModel extends ViewModel {
         return catImageLivedata;
     }
 
-    public LiveData<Boolean> getLoadError() {
-        return loadError;
-    }
-
-    public LiveData<Boolean> getLoading() {
-        return loading;
-    }
 
     public void fetchCatImage(String id, String page, String limit) {
-        loading.setValue(true);
         disposable.add(catRepository.getBreedImage(id, page, limit).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<BreedCatImage>>() {
 
                     @Override
                     public void onSuccess(List<BreedCatImage> breedCatImage) {
-                        loadError.setValue(false);
                         catImageLivedata.setValue(breedCatImage);
-                        loading.setValue(false);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        loadError.setValue(true);
-                        loading.setValue(false);
                     }
                 }));
 

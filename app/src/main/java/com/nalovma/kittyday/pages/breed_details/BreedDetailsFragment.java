@@ -65,11 +65,12 @@ public class BreedDetailsFragment extends BaseFragment {
 
     private void showUi(Breed breed) {
         if (breed != null) {
+            setToolbarTitle(breed.getName());
             breedNameTextView.setText(breed.getName());
-            breedOrigionTextView.setText(breed.getOrigin());
-            breedTemperamentTextView.setText(breed.getTemperament());
-            breedLifeSpanTextView.setText(breed.getLifeSpan());
-            breedMetricTextView.setText(breed.getWeight().getMetric());
+            breedOrigionTextView.setText(String.format("Origin: %s", breed.getOrigin()));
+            breedTemperamentTextView.setText(String.format("Temperament: %s", breed.getTemperament()));
+            breedLifeSpanTextView.setText(String.format("average life span: %s", breed.getLifeSpan()));
+            breedMetricTextView.setText(String.format("Weight: %s", breed.getWeight().getMetric()));
             breedDescriptionTextView.setText(breed.getDescription());
             fetchBreedImage(breed.getId(), "0", "3");
         }

@@ -11,7 +11,18 @@
 
     <style name="AppTheme.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:fontFamily">@font/roboto</item>
-        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/color_white</item>
     </style>
+
+    <style name="AppTheme.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="AppTheme.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+
 </resources>
