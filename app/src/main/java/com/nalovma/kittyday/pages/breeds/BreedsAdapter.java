@@ -21,18 +21,16 @@ import butterknife.ButterKnife;
 public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedViewHolder> {
 
     private BreedsListener breedsListener;
-    private final List<Breed> data = new ArrayList<>();
+    private List<Breed> data = new ArrayList<>();
 
-    BreedsAdapter(BreedsViewModel viewModel, LifecycleOwner lifecycleOwner, BreedsListener breedsListener) {
+    BreedsAdapter(BreedsListener breedsListener) {
         this.breedsListener = breedsListener;
-        viewModel.getBreedsLivedata().observe(lifecycleOwner, breeds -> {
-            data.clear();
-            if (breeds != null) {
-                data.addAll(breeds);
-                notifyDataSetChanged();
-            }
-        });
         setHasStableIds(true);
+    }
+
+    public void setData(List<Breed> data) {
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     @NonNull

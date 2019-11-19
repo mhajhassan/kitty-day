@@ -29,7 +29,6 @@ public class BreedsViewModel extends ViewModel {
     public BreedsViewModel(CatRepository catRepository) {
         this.catRepository = catRepository;
         disposable = new CompositeDisposable();
-        fetchBreeds();
     }
 
     public LiveData<List<Breed>> getBreedsLivedata() {
@@ -44,9 +43,28 @@ public class BreedsViewModel extends ViewModel {
         return loading;
     }
 
-    private void fetchBreeds() {
+    public void fetchBreeds() {
         loading.setValue(true);
         disposable.add(catRepository.getBreeds().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<Breed>>() {
+                    @Override
+                    public void onSuccess(List<Breed> breeds) {
+                        loadError.setValue(false);
+                        breedsLivedata.setValue(breeds);
+                        loading.setValue(false);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        loadError.setValue(true);
+                        loading.setValue(false);
+                    }
+                }));
+    }
+
+    public void fetchBreedByName(String name) {
+        loading.setValue(true);
+        disposable.add(catRepository.getBreedByName(name).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<List<Breed>>() {
                     @Override
                     public void onSuccess(List<Breed> breeds) {

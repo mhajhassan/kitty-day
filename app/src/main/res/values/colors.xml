@@ -9,6 +9,6 @@
     <color name="color_forground">#242a37</color>
     <color name="color_background">#1e2432</color>
 
-    1e2432
+    <color name="white_OP_87">#46ffffff</color>
 
 </resources>

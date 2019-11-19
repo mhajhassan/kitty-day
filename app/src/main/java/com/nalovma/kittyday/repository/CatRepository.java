@@ -26,6 +26,10 @@ public class CatRepository {
         return catService.getBreeds();
     }
 
+    public Single<List<Breed>> getBreedByName(String name) {
+        return catService.getBreedByName(name);
+    }
+
     public Single<List<BreedCatImage>> getBreedImage(String breedId, String page, String limit) {
         return catService.getBreedImage(breedId, page, limit);
     }

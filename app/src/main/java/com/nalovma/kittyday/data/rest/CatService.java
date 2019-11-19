@@ -32,4 +32,7 @@ public interface CatService {
 
     @POST("votes")
     Single<VoteResponse> postVote(@Body Vote vote);
+
+    @GET("breeds/search")
+    Single<List<Breed>> getBreedByName(@Query("q") String query);
 }

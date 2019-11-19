@@ -24,5 +24,11 @@
         <item name="android:textColor">@color/color_white</item>
     </style>
 
-
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search_white_24dp</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:background">@color/color_forground</item>
+        <item name="queryHint">@string/search_hint</item>
+    </style>
 </resources>
