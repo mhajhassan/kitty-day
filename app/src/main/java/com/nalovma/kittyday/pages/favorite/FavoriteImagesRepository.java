@@ -30,7 +30,7 @@ public class FavoriteImagesRepository {
         favoriteImagesDao.removeFavoriteImage(publicImage);
     }
 
-    public boolean isFavoriteImage(long id) {
+    public boolean isFavoriteImage(String id) {
         return favoriteImagesDao.isFavouriteImage(id) > 0;
     }
 

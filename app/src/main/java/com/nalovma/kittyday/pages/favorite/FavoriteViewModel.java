@@ -56,6 +56,10 @@ public class FavoriteViewModel extends ViewModel {
         repository.deleteFavoriteImage(publicImage);
     }
 
+    public boolean isFavorite(PublicImage publicImage) {
+        return repository.isFavoriteImage(publicImage.getId());
+    }
+
     @Override
     protected void onCleared() {
         super.onCleared();

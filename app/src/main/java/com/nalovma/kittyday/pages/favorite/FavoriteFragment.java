@@ -1,6 +1,7 @@
 package com.nalovma.kittyday.pages.favorite;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
+import com.nalovma.kittyday.data.model.PublicImage;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 
 import javax.inject.Inject;
@@ -26,7 +28,7 @@ public class FavoriteFragment extends BaseFragment {
     @Inject
     ViewModelFactory viewModelFactory;
     FavoriteViewModel favoriteViewModel;
-
+    FavoriteAdapter favoriteAdapter;
 
     @Override
     protected int layoutRes() {
@@ -39,7 +41,8 @@ public class FavoriteFragment extends BaseFragment {
 
         favoriteViewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoriteViewModel.class);
         listView.addItemDecoration(new DividerItemDecoration(getBaseActivity(), 0));
-        listView.setAdapter(new FavoriteAdapter(favoriteViewModel, this));
+        favoriteAdapter = new FavoriteAdapter(favoriteViewModel, this);
+        listView.setAdapter(favoriteAdapter);
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         setToolbarBackgroundColor(R.color.colorPrimaryDark);

@@ -24,6 +24,6 @@ public interface FavoriteImagesDao {
     @Delete
     void removeFavoriteImage(PublicImage publicImage);
 
-    @Query("SELECT count(*) FROM favorite_table where id LIKE :id")
-    int isFavouriteImage(long id);
+    @Query("SELECT count(*) FROM favorite_table where id = :id")
+    int isFavouriteImage(String id);
 }
