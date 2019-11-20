@@ -25,19 +25,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="#22ED7563" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <ToggleButton
             android:id="@+id/fav_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_favorite_red_24dp"
-            app:backgroundTint="@android:color/white"
-            app:fabSize="normal"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/toggle_button_selector"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:scaleType="centerCrop"
+            android:text=""
+            android:textOff=""
+            android:textOn=""
             app:layout_constraintBottom_toBottomOf="@+id/skip_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/skip_button"
-            app:rippleColor="#225BC9FA" />
+            app:layout_constraintTop_toTopOf="@+id/skip_button" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/like_button"

@@ -2,10 +2,13 @@ package com.nalovma.kittyday.pages.public_images;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +33,7 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 import static com.nalovma.kittyday.utils.Constants.*;
@@ -56,11 +60,15 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     @BindView(R.id.tv_error)
     TextView errorTextView;
+
     @BindView(R.id.loading_view)
     View loadingView;
 
+    @BindView(R.id.fav_button)
+    ToggleButton toggleButton;
+
     private int pageNumber = 0;
-    private int itemLimit = 5;
+    private int itemLimit = 10;
 
 
     private PublicImage currentPublicImageItem;
@@ -146,9 +154,15 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         postVote(currentPublicImageItem.getId(), sub_id, VOTE_LIKE);
     }
 
-    @OnClick(R.id.fav_button)
-    public void onFavButtonClicked(View view) {
-        favoriteViewModel.insertFavoriteImage(currentPublicImageItem);
+    @OnCheckedChanged(R.id.fav_button)
+    public void onFavButtonClicked(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            favoriteViewModel.insertFavoriteImage(currentPublicImageItem);
+            Log.d("favorite", "added to favorite" + currentPublicImageItem.getId());
+        } else {
+            favoriteViewModel.deleteFavoriteImage(currentPublicImageItem);
+            Log.d("favorite", "not added to favorite" + currentPublicImageItem.getId());
+        }
     }
 
     private void postVote(String imageId, String subId, int Value) {
