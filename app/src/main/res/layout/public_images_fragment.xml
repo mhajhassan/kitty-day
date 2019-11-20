@@ -21,25 +21,10 @@
             app:backgroundTint="@android:color/white"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fav_button"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="#22ED7563" />
 
-        <ToggleButton
-            android:id="@+id/fav_button"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:background="@drawable/toggle_button_selector"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:scaleType="centerCrop"
-            android:text=""
-            android:textOff=""
-            android:textOn=""
-            app:layout_constraintBottom_toBottomOf="@+id/skip_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/skip_button" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/like_button"
@@ -52,7 +37,7 @@
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fav_button"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
             app:rippleColor="#226FE2B3" />
 
 
@@ -75,8 +60,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="top"
-            app:constraint_referenced_ids="fav_button,like_button,skip_button"
+            app:constraint_referenced_ids="like_button,skip_button"
             tools:layout_editor_absoluteY="731dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,7 @@
 package com.nalovma.kittyday.pages.favorite;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,8 +86,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                     .load(publicImage.getUrl())
                     .apply(options)
                     .into(favoriteImage);
-
-            favoriteButton.setChecked(favoriteViewModel.isFavorite(publicImage));
+            Log.d("PublicImagesAdapter","added to favorite: "+publicImage.getId());
 
             favoriteButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

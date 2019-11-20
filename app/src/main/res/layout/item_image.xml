@@ -17,6 +17,20 @@
         android:scaleType="centerCrop"
         app:riv_corner_radius="8dp" />
 
+    <ToggleButton
+        android:id="@+id/iv_fav_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/toggle_button_selector"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:scaleType="centerCrop"
+        android:textOff=""
+        android:textOn="" />
+
     <FrameLayout
         android:id="@+id/left_overlay"
         android:layout_width="match_parent"
@@ -48,11 +62,11 @@
     <FrameLayout
         android:id="@+id/top_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <FrameLayout
         android:id="@+id/bottom_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </androidx.cardview.widget.CardView>

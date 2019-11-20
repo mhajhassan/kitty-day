@@ -64,9 +64,6 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     @BindView(R.id.loading_view)
     View loadingView;
 
-    @BindView(R.id.fav_button)
-    ToggleButton toggleButton;
-
     private int pageNumber = 0;
     private int itemLimit = 10;
 
@@ -84,7 +81,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         publicImagesViewModel = ViewModelProviders.of(this, viewModelFactory).get(PublicImagesViewModel.class);
         favoriteViewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoriteViewModel.class);
         manager = new CardStackLayoutManager(getBaseActivity(), this);
-        publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel, this);
+        publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel,favoriteViewModel, this);
 
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         setToolbarNavigationIcon(R.drawable.ic_menu_white_24dp);
@@ -152,17 +149,6 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
         postVote(currentPublicImageItem.getId(), sub_id, VOTE_LIKE);
-    }
-
-    @OnCheckedChanged(R.id.fav_button)
-    public void onFavButtonClicked(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            favoriteViewModel.insertFavoriteImage(currentPublicImageItem);
-            Log.d("favorite", "added to favorite" + currentPublicImageItem.getId());
-        } else {
-            favoriteViewModel.deleteFavoriteImage(currentPublicImageItem);
-            Log.d("favorite", "not added to favorite" + currentPublicImageItem.getId());
-        }
     }
 
     private void postVote(String imageId, String subId, int Value) {
