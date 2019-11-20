@@ -3,6 +3,7 @@ package com.nalovma.kittyday.di.module;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.nalovma.kittyday.pages.favorite.FavoriteViewModel;
 import com.nalovma.kittyday.di.util.ViewModelKey;
 import com.nalovma.kittyday.pages.breed_details.BreedDetailsViewModel;
 import com.nalovma.kittyday.pages.breeds.BreedsViewModel;
@@ -31,6 +32,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(PublicImagesViewModel.class)
     abstract ViewModel bindRandomImagesViewModel(PublicImagesViewModel publicImagesViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteViewModel.class)
+    abstract ViewModel bindFavoriteViewModel(FavoriteViewModel favoriteViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

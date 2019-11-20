@@ -90,6 +90,13 @@ public class NavigationDrawerFragment extends BaseFragment {
         closeDrawer();
     }
 
+    @OnClick(R.id.favorite_button)
+    public void onFavoriteImagesClicked(View view) {
+        mMainNavigation.goToFavorites();
+        setButtonActivated(mDrawerPublicImagesButton);
+        closeDrawer();
+    }
+
     public void setButtonActivated(Button buttonActivated) {
         mDrawerPublicImagesButton.setActivated(false);
         mDrawerBreedsButton.setActivated(false);

@@ -1,9 +1,10 @@
-package com.nalovma.kittyday.pages.public_images;
+package com.nalovma.kittyday.pages.favorite;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
@@ -21,14 +22,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapter.ViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
     private final List<PublicImage> data = new ArrayList<>();
     private Context context;
 
-    PublicImagesAdapter(PublicImagesViewModel viewModel, LifecycleOwner lifecycleOwner) {
+    FavoriteAdapter(FavoriteViewModel viewModel, LifecycleOwner lifecycleOwner) {
 
-        viewModel.getPublicImagesLivedata().observe(lifecycleOwner, catImageList -> {
+        viewModel.getFavoriteImagesLiveData().observe(lifecycleOwner, catImageList -> {
             data.clear();
             if (catImageList != null) {
                 data.addAll(catImageList);
@@ -41,7 +42,7 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_list_item, parent, false);
         context = parent.getContext();
         return new ViewHolder(view);
     }
@@ -56,16 +57,12 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
         return data.size();
     }
 
-    public PublicImage getPublicImageItem(int position) {
-        return data.get(position);
-    }
-
     static final class ViewHolder extends RecyclerView.ViewHolder {
 
         PublicImage publicImage;
 
-        @BindView(R.id.cat_image)
-        RoundedImageView catImageView;
+        @BindView(R.id.iv_fav_image)
+        ImageView favoriteImage;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -81,7 +78,7 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
             Glide.with(context)
                     .load(publicImage.getUrl())
                     .apply(options)
-                    .into(catImageView);
+                    .into(favoriteImage);
         }
     }
 }

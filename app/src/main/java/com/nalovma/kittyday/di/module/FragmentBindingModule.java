@@ -2,6 +2,7 @@ package com.nalovma.kittyday.di.module;
 
 import com.nalovma.kittyday.pages.breed_details.BreedDetailsFragment;
 import com.nalovma.kittyday.pages.breeds.BreedsFragment;
+import com.nalovma.kittyday.pages.favorite.FavoriteFragment;
 import com.nalovma.kittyday.pages.main.NavigationDrawerFragment;
 import com.nalovma.kittyday.pages.public_images.PublicImagesFragment;
 
@@ -18,7 +19,10 @@ public abstract class FragmentBindingModule {
     abstract BreedDetailsFragment provideBreedDetailsFragment();
 
     @ContributesAndroidInjector
-    abstract PublicImagesFragment provideRandomImagesFragment();
+    abstract PublicImagesFragment providePublicImagesFragment();
+
+    @ContributesAndroidInjector
+    abstract FavoriteFragment provideFavoriteFragment();
 
     @ContributesAndroidInjector
     abstract NavigationDrawerFragment provideNavigationDrawerFragment();

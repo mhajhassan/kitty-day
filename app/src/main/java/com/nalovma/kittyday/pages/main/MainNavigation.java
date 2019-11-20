@@ -5,4 +5,6 @@ interface MainNavigation {
     void goToBreeds();
 
     void goToPublicImages();
+
+    void goToFavorites();
 }

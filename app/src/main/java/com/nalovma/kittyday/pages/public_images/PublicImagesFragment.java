@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
+import com.nalovma.kittyday.pages.favorite.FavoriteViewModel;
+import com.nalovma.kittyday.data.model.PublicImage;
 import com.nalovma.kittyday.data.model.Vote;
 import com.nalovma.kittyday.utils.ViewModelFactory;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
@@ -41,6 +43,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     @Inject
     ViewModelFactory viewModelFactory;
     PublicImagesViewModel publicImagesViewModel;
+    FavoriteViewModel favoriteViewModel;
 
     private CardStackLayoutManager manager;
     private PublicImagesAdapter publicImagesAdapter;
@@ -60,7 +63,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     private int itemLimit = 5;
 
 
-    private String currentImageId;
+    private PublicImage currentPublicImageItem;
     private String sub_id;
 
     @Override
@@ -71,6 +74,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         publicImagesViewModel = ViewModelProviders.of(this, viewModelFactory).get(PublicImagesViewModel.class);
+        favoriteViewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoriteViewModel.class);
         manager = new CardStackLayoutManager(getBaseActivity(), this);
         publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel, this);
 
@@ -110,7 +114,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
 
     @Override
     public void onCardAppeared(View view, int position) {
-        currentImageId = publicImagesAdapter.getImageId(position);
+        currentPublicImageItem = publicImagesAdapter.getPublicImageItem(position);
     }
 
     @Override
@@ -127,7 +131,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
-        postVote(currentImageId, sub_id, VOTE_SKIP);
+        postVote(currentPublicImageItem.getId(), sub_id, VOTE_SKIP);
     }
 
     @OnClick(R.id.like_button)
@@ -139,12 +143,12 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 .build();
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
-        postVote(currentImageId, sub_id, VOTE_LIKE);
+        postVote(currentPublicImageItem.getId(), sub_id, VOTE_LIKE);
     }
 
     @OnClick(R.id.fav_button)
     public void onFavButtonClicked(View view) {
-
+        favoriteViewModel.insertFavoriteImage(currentPublicImageItem);
     }
 
     private void postVote(String imageId, String subId, int Value) {

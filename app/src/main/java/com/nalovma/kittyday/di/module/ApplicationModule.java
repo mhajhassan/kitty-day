@@ -63,7 +63,7 @@ public class ApplicationModule {
     @Singleton
     @Provides
     SharedPreferences provideSharedPreferences(Context context) {
-        return context.getSharedPreferences("Store", Context.MODE_PRIVATE);
+        return context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
 }

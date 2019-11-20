@@ -8,4 +8,6 @@ public interface Constants {
     int VOTE_SKIP = 0;
     int VOTE_LIKE = 1;
     String UNIQUE_KEY = "unique_key";
+    String DATABASE_NAME = "app_database";
+    String SHARED_PREFERENCES_NAME = "store";
 }

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseActivity;
 import com.nalovma.kittyday.pages.breeds.BreedsFragment;
+import com.nalovma.kittyday.pages.favorite.FavoriteFragment;
 import com.nalovma.kittyday.pages.public_images.PublicImagesFragment;
 
 import java.util.Objects;
@@ -60,6 +61,11 @@ public class MainActivity extends BaseActivity implements MainNavigation {
     @Override
     public void goToPublicImages() {
         switchFragment(new PublicImagesFragment());
+    }
+
+    @Override
+    public void goToFavorites() {
+        switchFragment(new FavoriteFragment());
     }
 
     public void setToolbarBackgroundDrawable(@DrawableRes int drawable) {
