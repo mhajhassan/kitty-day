@@ -12,6 +12,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nalovma.kittyday.pages.main.MainActivity;
 
 import butterknife.ButterKnife;
@@ -91,5 +92,10 @@ public abstract class BaseFragment extends DaggerFragment {
             return;
         }
         ((MainActivity) getActivity()).setToolbarTitle(message);
+    }
+
+    public FirebaseAnalytics getFirebaseAnalytics(){
+        // Obtain the FirebaseAnalytics instance.
+        return FirebaseAnalytics.getInstance(getBaseActivity());
     }
 }

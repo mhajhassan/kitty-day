@@ -5,6 +5,7 @@ import com.nalovma.kittyday.pages.breeds.BreedsFragment;
 import com.nalovma.kittyday.pages.favorite.FavoriteFragment;
 import com.nalovma.kittyday.pages.main.NavigationDrawerFragment;
 import com.nalovma.kittyday.pages.public_images.PublicImagesFragment;
+import com.nalovma.kittyday.pages.upload_image.UploadImageFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -23,6 +24,9 @@ public abstract class FragmentBindingModule {
 
     @ContributesAndroidInjector
     abstract FavoriteFragment provideFavoriteFragment();
+
+    @ContributesAndroidInjector
+    abstract UploadImageFragment provideUploadImageFragment();
 
     @ContributesAndroidInjector
     abstract NavigationDrawerFragment provideNavigationDrawerFragment();

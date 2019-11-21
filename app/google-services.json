@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "923044883775",
+    "firebase_url": "https://kitty-day.firebaseio.com",
+    "project_id": "kitty-day",
+    "storage_bucket": "kitty-day.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923044883775:android:040cc926fed6c811e1378a",
+        "android_client_info": {
+          "package_name": "com.nalovma.kittyday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923044883775-hms804gcn4n4v0r80tansroch98asr47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nalovma.kittyday",
+            "certificate_hash": "65dfd3afa69640be28f91817c6c10a86ec7d4bd0"
+          }
+        },
+        {
+          "client_id": "923044883775-gohuklglvsbmr8nkoc2djbv1dc4fc1ni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuFgxT5HyP74l29gM0B13C5nMukTKSWTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923044883775-gohuklglvsbmr8nkoc2djbv1dc4fc1ni.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

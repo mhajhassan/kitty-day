@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
 import com.nalovma.kittyday.pages.favorite.FavoriteViewModel;
@@ -137,6 +138,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
         postVote(currentPublicImageItem.getId(), sub_id, VOTE_SKIP);
+        sendAnalyticsData(SKIP);
     }
 
     @OnClick(R.id.like_button)
@@ -149,6 +151,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         manager.setSwipeAnimationSetting(setting);
         cardStackView.swipe();
         postVote(currentPublicImageItem.getId(), sub_id, VOTE_LIKE);
+        sendAnalyticsData(LIKE);
     }
 
     private void postVote(String imageId, String subId, int Value) {
@@ -205,5 +208,12 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
                 }
             }
         });
+    }
+
+    private void sendAnalyticsData(String type) {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, type);
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, VOTING);
+        getFirebaseAnalytics().logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 }

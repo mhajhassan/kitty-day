@@ -7,4 +7,6 @@ interface MainNavigation {
     void goToPublicImages();
 
     void goToFavorites();
+
+    void goToUploadImage();
 }

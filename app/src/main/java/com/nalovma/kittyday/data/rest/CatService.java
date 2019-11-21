@@ -4,15 +4,21 @@ import com.nalovma.kittyday.data.model.Breed;
 import com.nalovma.kittyday.data.model.BreedCatImage;
 import com.nalovma.kittyday.data.model.Category;
 import com.nalovma.kittyday.data.model.PublicImage;
+import com.nalovma.kittyday.data.model.UploadImageResponse;
 import com.nalovma.kittyday.data.model.Vote;
 import com.nalovma.kittyday.data.model.VoteResponse;
 
 import java.util.List;
 
+
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface CatService {
@@ -35,4 +41,9 @@ public interface CatService {
 
     @GET("breeds/search")
     Single<List<Breed>> getBreedByName(@Query("q") String query);
+
+    @Multipart
+    @POST("images/upload")
+    Single<UploadImageResponse> uploadImage(@Part("sub_id") RequestBody sub_id,
+                                                @Part MultipartBody.Part file);
 }

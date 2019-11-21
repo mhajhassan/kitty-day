@@ -10,4 +10,6 @@
     <string name="favorite">favorite</string>
     <string name="upload_images">upload images</string>
     <string name="search_hint">Search for Breed</string>
+    <string name="upload">Upload</string>
+    <string name="upload_error">An Error occurred while upload image</string>
 </resources>

@@ -97,6 +97,13 @@ public class NavigationDrawerFragment extends BaseFragment {
         closeDrawer();
     }
 
+    @OnClick(R.id.upload_images_button)
+    public void onUploadImagesClicked(View view) {
+        mMainNavigation.goToUploadImage();
+        setButtonActivated(mDrawerPublicImagesButton);
+        closeDrawer();
+    }
+
     public void setButtonActivated(Button buttonActivated) {
         mDrawerPublicImagesButton.setActivated(false);
         mDrawerBreedsButton.setActivated(false);

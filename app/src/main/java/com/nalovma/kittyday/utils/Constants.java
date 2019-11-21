@@ -10,4 +10,10 @@ public interface Constants {
     String UNIQUE_KEY = "unique_key";
     String DATABASE_NAME = "app_database";
     String SHARED_PREFERENCES_NAME = "store";
+    String IMAGE = "image";
+
+    String SKIP = "skip";
+    String LIKE = "like";
+    String VOTING = "voting";
+
 }

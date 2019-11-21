@@ -3,6 +3,7 @@ package com.nalovma.kittyday.repository;
 import com.nalovma.kittyday.data.model.Breed;
 import com.nalovma.kittyday.data.model.BreedCatImage;
 import com.nalovma.kittyday.data.model.PublicImage;
+import com.nalovma.kittyday.data.model.UploadImageResponse;
 import com.nalovma.kittyday.data.model.Vote;
 import com.nalovma.kittyday.data.model.VoteResponse;
 import com.nalovma.kittyday.data.rest.CatService;
@@ -12,6 +13,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class CatRepository {
 
@@ -41,4 +44,9 @@ public class CatRepository {
     public Single<VoteResponse> postVote(Vote vote) {
         return catService.postVote(vote);
     }
+
+    public Single<UploadImageResponse> uploadImage(RequestBody user_idRequestBody, MultipartBody.Part part) {
+        return catService.uploadImage(user_idRequestBody, part);
+    }
+
 }

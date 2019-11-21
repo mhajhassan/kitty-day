@@ -48,7 +48,7 @@ public class FavoriteFragment extends BaseFragment {
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         setToolbarNavigationIcon(R.drawable.ic_menu_white_24dp);
         setToolbarTitleColor(R.color.color_white);
-        setToolbarTitle(getString(R.string.breeds));
+        setToolbarTitle(getString(R.string.favorite));
         fetchFavorite();
     }
 
