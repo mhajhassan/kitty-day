@@ -36,6 +36,9 @@ public interface CatService {
     @GET("images/search")
     Single<List<PublicImage>> getPublicImages(@Query("page") int page, @Query("limit") int limit, @Query("order") String order);
 
+    @GET("images/search")
+    Single<List<PublicImage>> getPublicImages(@Query("page") int page, @Query("limit") int limit, @Query("order") String order, @Query("breed_ids") String breed_ids, @Query("category_ids") String category_ids);
+
     @POST("votes")
     Single<VoteResponse> postVote(@Body Vote vote);
 

@@ -2,13 +2,10 @@ package com.nalovma.kittyday.pages.public_images;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nalovma.kittyday.R;
@@ -37,7 +33,6 @@ import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 import static com.nalovma.kittyday.utils.Constants.*;
@@ -188,7 +183,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     }
 
     private void paginate() {
-        publicImagesViewModel.fetchPublicImages(pageNumber++, itemLimit, ITEMS_ORDER);
+        publicImagesViewModel.fetchPublicImages(pageNumber++, itemLimit, ITEMS_ORDER_RANDOM);
     }
 
     private void observableViewModel() {

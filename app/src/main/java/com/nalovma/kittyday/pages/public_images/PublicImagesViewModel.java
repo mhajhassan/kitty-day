@@ -72,6 +72,28 @@ public class PublicImagesViewModel extends ViewModel {
 
     }
 
+    public void fetchPublicImages(int page, int limit, String order, String breed_ids, String category_ids) {
+        loading.setValue(true);
+        disposable.add(catRepository.getPublicImages(page, limit, order, breed_ids, category_ids).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<PublicImage>>() {
+
+                    @Override
+                    public void onSuccess(List<PublicImage> publicImages) {
+                        loadError.setValue(false);
+                        publicImagesLivedata.setValue(publicImages);
+                        loading.setValue(false);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        loadError.setValue(true);
+                        loading.setValue(false);
+                    }
+                }));
+
+    }
+
     public void postVote(Vote vote) {
         disposable.add(catRepository.postVote(vote).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

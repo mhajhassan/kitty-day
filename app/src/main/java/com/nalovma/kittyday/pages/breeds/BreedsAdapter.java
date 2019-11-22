@@ -28,11 +28,6 @@ public class BreedsAdapter extends RecyclerView.Adapter<BreedsAdapter.BreedViewH
         setHasStableIds(true);
     }
 
-    public BreedsAdapter() {
-        setHasStableIds(true);
-    }
-
-
     public void setData(List<Breed> data) {
         this.data = data;
         notifyDataSetChanged();

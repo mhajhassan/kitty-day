@@ -3,6 +3,8 @@ package com.nalovma.kittyday.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Breed  {
 
     @SerializedName("adaptability")
@@ -270,5 +272,11 @@ public class Breed  {
 
     public Integer getCatFriendly() {
         return catFriendly;
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

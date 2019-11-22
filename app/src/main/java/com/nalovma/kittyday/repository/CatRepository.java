@@ -46,6 +46,10 @@ public class CatRepository {
         return catService.getPublicImages(page, limit, order);
     }
 
+    public Single<List<PublicImage>> getPublicImages(int page, int limit, String order, String breed_ids, String category_ids) {
+        return catService.getPublicImages(page, limit, order, breed_ids, category_ids);
+    }
+
     public Single<VoteResponse> postVote(Vote vote) {
         return catService.postVote(vote);
     }
