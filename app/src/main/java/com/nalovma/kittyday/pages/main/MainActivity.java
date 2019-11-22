@@ -23,7 +23,6 @@ import com.nalovma.kittyday.pages.upload_image.UploadImageFragment;
 import java.util.Objects;
 
 import butterknife.BindView;
-import butterknife.internal.Utils;
 
 public class MainActivity extends BaseActivity implements MainNavigation {
 

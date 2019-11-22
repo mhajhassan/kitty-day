@@ -2,6 +2,7 @@ package com.nalovma.kittyday.repository;
 
 import com.nalovma.kittyday.data.model.Breed;
 import com.nalovma.kittyday.data.model.BreedCatImage;
+import com.nalovma.kittyday.data.model.Category;
 import com.nalovma.kittyday.data.model.PublicImage;
 import com.nalovma.kittyday.data.model.UploadImageResponse;
 import com.nalovma.kittyday.data.model.Vote;
@@ -27,6 +28,10 @@ public class CatRepository {
 
     public Single<List<Breed>> getBreeds() {
         return catService.getBreeds();
+    }
+
+    public Single<List<Category>> getCategories() {
+        return catService.getCategories();
     }
 
     public Single<List<Breed>> getBreedByName(String name) {
