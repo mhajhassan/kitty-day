@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,7 +20,7 @@
             android:src="@drawable/skip_red_24dp"
             app:backgroundTint="@android:color/white"
             app:fabSize="auto"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:rippleColor="#22ED7563" />
@@ -35,7 +35,7 @@
             android:src="@drawable/like_green_24dp"
             app:backgroundTint="@android:color/white"
             app:fabSize="auto"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/adView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:rippleColor="#226FE2B3" />
@@ -60,8 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="top"
-            app:constraint_referenced_ids="like_button,skip_button"
-            tools:layout_editor_absoluteY="731dp" />
+            app:constraint_referenced_ids="like_button,skip_button" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -70,19 +69,30 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            ads:adSize="BANNER"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            ads:adUnitId="@string/banner_ad_unit_id" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:visibility="gone" />
+        android:layout_gravity="center" />
 
     <ProgressBar
         android:id="@+id/loading_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:visibility="gone" />
+        android:layout_gravity="center" />
 </FrameLayout>

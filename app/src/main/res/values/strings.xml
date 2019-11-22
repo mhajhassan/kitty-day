@@ -12,4 +12,6 @@
     <string name="search_hint">Search for Breed</string>
     <string name="upload">Upload</string>
     <string name="upload_error">An Error occurred while upload image</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="sample_admob_id">ca-app-pub-3940256099942544~3347511713</string>
 </resources>

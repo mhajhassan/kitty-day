@@ -15,6 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.nalovma.kittyday.R;
 import com.nalovma.kittyday.base.BaseFragment;
@@ -65,6 +68,9 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
     @BindView(R.id.loading_view)
     View loadingView;
 
+    @BindView(R.id.adView)
+    AdView mAdView;
+
     private int pageNumber = 0;
     private int itemLimit = 10;
 
@@ -82,7 +88,7 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         publicImagesViewModel = ViewModelProviders.of(this, viewModelFactory).get(PublicImagesViewModel.class);
         favoriteViewModel = ViewModelProviders.of(this, viewModelFactory).get(FavoriteViewModel.class);
         manager = new CardStackLayoutManager(getBaseActivity(), this);
-        publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel,favoriteViewModel, this);
+        publicImagesAdapter = new PublicImagesAdapter(publicImagesViewModel, favoriteViewModel, this);
 
         setToolbarBackgroundColor(R.color.colorPrimaryDark);
         setToolbarNavigationIcon(R.drawable.ic_menu_white_24dp);
@@ -94,6 +100,11 @@ public class PublicImagesFragment extends BaseFragment implements CardStackListe
         }
         sub_id = sharedPreferences.getString(UNIQUE_KEY, "");
         initializeCardStackView();
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override
