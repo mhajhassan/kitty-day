@@ -18,6 +18,7 @@ import com.nalovma.kittyday.base.BaseActivity;
 import com.nalovma.kittyday.pages.breeds.BreedsFragment;
 import com.nalovma.kittyday.pages.favorite.FavoriteFragment;
 import com.nalovma.kittyday.pages.public_images.PublicImagesFragment;
+import com.nalovma.kittyday.pages.search_images.SearchImagesFragment;
 import com.nalovma.kittyday.pages.upload_image.UploadImageFragment;
 
 import java.util.Objects;
@@ -71,6 +72,11 @@ public class MainActivity extends BaseActivity implements MainNavigation {
     @Override
     public void goToUploadImage() {
         switchFragment(new UploadImageFragment());
+    }
+
+    @Override
+    public void goToSearch() {
+        switchFragment(new SearchImagesFragment());
     }
 
     public void setToolbarBackgroundDrawable(@DrawableRes int drawable) {

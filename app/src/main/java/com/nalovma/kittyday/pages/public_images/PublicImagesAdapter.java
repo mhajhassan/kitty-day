@@ -30,8 +30,10 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
     private final List<PublicImage> data = new ArrayList<>();
     private Context context;
     private FavoriteViewModel favoriteViewModel;
+    private String owner;
 
-    PublicImagesAdapter(PublicImagesViewModel viewModel, FavoriteViewModel favoriteViewModel, LifecycleOwner lifecycleOwner) {
+    public PublicImagesAdapter(PublicImagesViewModel viewModel, FavoriteViewModel favoriteViewModel, LifecycleOwner lifecycleOwner) {
+        owner = lifecycleOwner.toString();
         this.favoriteViewModel = favoriteViewModel;
         viewModel.getPublicImagesLivedata().observe(lifecycleOwner, catImageList -> {
             data.clear();
@@ -46,7 +48,13 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
+        View view;
+        if (owner.contains("PublicImagesFragment")) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item_image, parent, false);
+        }
+
         context = parent.getContext();
         return new ViewHolder(view);
     }
@@ -96,10 +104,10 @@ public class PublicImagesAdapter extends RecyclerView.Adapter<PublicImagesAdapte
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         favoriteViewModel.insertFavoriteImage(publicImage);
-                        Log.d("PublicImagesAdapter","added to favorite: "+publicImage.getId());
+                        Log.d("PublicImagesAdapter", "added to favorite: " + publicImage.getId());
                     } else {
                         favoriteViewModel.deleteFavoriteImage(publicImage);
-                        Log.d("PublicImagesAdapter","removed to favorite: "+publicImage.getId());
+                        Log.d("PublicImagesAdapter", "removed to favorite: " + publicImage.getId());
                     }
                 }
             });

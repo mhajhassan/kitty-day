@@ -104,6 +104,13 @@ public class NavigationDrawerFragment extends BaseFragment {
         closeDrawer();
     }
 
+    @OnClick(R.id.search_button)
+    public void onSearchClicked(View view) {
+        mMainNavigation.goToSearch();
+        setButtonActivated(mDrawerPublicImagesButton);
+        closeDrawer();
+    }
+
     public void setButtonActivated(Button buttonActivated) {
         mDrawerPublicImagesButton.setActivated(false);
         mDrawerBreedsButton.setActivated(false);

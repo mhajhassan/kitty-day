@@ -9,4 +9,6 @@ interface MainNavigation {
     void goToFavorites();
 
     void goToUploadImage();
+
+    void goToSearch();
 }
